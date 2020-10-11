@@ -1,12 +1,17 @@
 import Head from 'next/head';
-import { defaultTitle } from '../constants';
+import { defaultDisplayTitle, defaultTitle } from '../constants';
 
 type Props = {
   children?: React.ReactNode;
   title?: string;
+  displayTitle?: string;
 };
 
-const Layout: React.FC<Props> = ({ children, title = defaultTitle }) => (
+const Layout: React.FC<Props> = ({
+  children,
+  title = defaultTitle,
+  displayTitle = defaultDisplayTitle
+}) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -14,7 +19,7 @@ const Layout: React.FC<Props> = ({ children, title = defaultTitle }) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <main className="container is-fluid">
-      <h1 className="title mt-4">Pokemons by Patryk Nawolski</h1>
+      <h1 className="title mt-4">{displayTitle}</h1>
       {children}
     </main>
   </div>
