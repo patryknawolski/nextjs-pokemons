@@ -4,17 +4,16 @@ import {
   GetPokemonsRequestResponse,
   GetPokemonsResponse
 } from '../services/pokemons';
-import parsePokemonName from '../utils/parsePokemonName';
 
 export const parseGetPokemonsResult = (pokemons: GetPokemonsRequestResponse): GetPokemonsResponse =>
   pokemons.results.map((pokemon) => ({
     ...pokemon,
-    name: parsePokemonName(pokemon.name)
+    name: pokemon.name
   }));
 
 export const parseGetPokemonResult = (pokemon: GetPokemonRequestResponse): GetPokemonResponse => {
   return {
-    name: parsePokemonName(pokemon.name),
+    name: pokemon.name,
     abilities: pokemon.abilities.map(({ ability }) => ability.name),
     base_experience: pokemon.base_experience,
     sprites: {

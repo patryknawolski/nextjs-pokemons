@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getPokemons, GetPokemonsResponse } from '../services/pokemons';
+import parsePokemonName from '../utils/parsePokemonName';
 
 type Props = {
   pokemons: GetPokemonsResponse;
@@ -17,7 +18,7 @@ const IndexPage: React.FC<Props> = ({ pokemons }) => (
             <a>
               <div className="card is-clickable">
                 <div className="card-content">
-                  <h4 className="title is-4">{name}</h4>
+                  <h4 className="title is-4">{parsePokemonName(name)}</h4>
                 </div>
               </div>
             </a>
