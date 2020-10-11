@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Link from 'next/link';
 import _ from 'lodash';
 import { getPokemon, getPokemons, GetPokemonResponse } from '../../services/pokemons';
 import Layout from '../../components/Layout';
@@ -10,7 +11,10 @@ type Props = {
 
 const PokemonPage: React.FC<Props> = ({ pokemon }) => (
   <Layout>
-    <h2 className="title is-2 has-text-primary">{_.upperFirst(pokemon.name)}</h2>
+    <Link href="/">
+      <a className="title is-5 has-text-link">Go back</a>
+    </Link>
+    <h2 className="title is-2 has-text-primary">{pokemon.name}</h2>
     <img alt={`${pokemon.name} front`} src={pokemon.sprites.front_default} />
     <img alt={`${pokemon.name} back`} src={pokemon.sprites.back_default} />
     <h4 className="title is-4">Types: </h4>

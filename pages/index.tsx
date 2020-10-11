@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import _ from 'lodash';
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getPokemons, GetPokemonsResponse } from '../services/pokemons';
 
@@ -13,11 +13,15 @@ const IndexPage: React.FC<Props> = ({ pokemons }) => (
     <ul className="columns is-multiline">
       {pokemons.map(({ name }) => (
         <li key={name} className="column is-4">
-          <div className="card is-clickable">
-            <div className="card-content">
-              <h4 className="title is-4">{_.upperFirst(name)}</h4>
-            </div>
-          </div>
+          <Link href={`pokemon/${name}`}>
+            <a>
+              <div className="card is-clickable">
+                <div className="card-content">
+                  <h4 className="title is-4">{name}</h4>
+                </div>
+              </div>
+            </a>
+          </Link>
         </li>
       ))}
     </ul>
