@@ -39,5 +39,13 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton']
       }
     ]
-  }
+  },
+  overrides: [
+    {
+      files: ['**/*.tsx'],
+      rules: {
+        'react/prop-types': 'off'
+      }
+    }
+  ]
 };
