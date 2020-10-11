@@ -1,11 +1,12 @@
 import Head from 'next/head';
+import { defaultTitle } from '../constants';
 
 type Props = {
   children?: React.ReactNode;
   title?: string;
 };
 
-const Layout = ({ children, title = 'Starships - Performance Media' }: Props) => (
+const Layout: React.FC<Props> = ({ children, title = defaultTitle }) => (
   <div>
     <Head>
       <title>{title}</title>
